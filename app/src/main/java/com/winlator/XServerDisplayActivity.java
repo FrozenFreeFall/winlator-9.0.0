@@ -202,6 +202,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             }
         }
 
+        // 加载初始化进度条
         preloaderDialog.show(R.string.starting_up);
 
         inputControlsManager = new InputControlsManager(this);
