@@ -150,7 +150,7 @@ public class ContainersFragment extends Fragment {
                             XrActivity.openIntent(getActivity(), container.id, null);
                         }
                         break;
-                    case R.id.container_edit:
+                    case R.id.container_edit: // 编辑
                         FragmentManager fragmentManager = getParentFragmentManager();
                         fragmentManager.beginTransaction()
                             .addToBackStack(null)

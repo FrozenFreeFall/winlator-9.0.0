@@ -376,7 +376,11 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         if (dxwrapper.equals("cnc-ddraw")) envVars.put("CNC_DDRAW_CONFIG_FILE", "C:\\ProgramData\\cnc-ddraw\\ddraw.ini");
 
         String wincomponents = shortcut != null ? shortcut.getExtra("wincomponents", container.getWinComponents()) : container.getWinComponents();
-        if (!wincomponents.equals(container.getExtra("wincomponents"))) {
+        String containerWincomponents = container.getExtra("wincomponents");
+        // containerWincomponents:direct3d=1,directsound=1,directmusic=0,directshow=0,directplay=0,vcrun2010=1,wmdecoder=1
+        //          wincomponents:direct3d=1,directsound=1,directmusic=0,directshow=0,directplay=0,vcrun2010=1,wmdecoder=1
+        Log.d(TAG, "setupWineSystemFiles containerWincomponents:" + containerWincomponents + ",wincomponents:" + wincomponents);
+        if (!wincomponents.equals(containerWincomponents)) {
             extractWinComponentFiles();
             container.putExtra("wincomponents", wincomponents);
             containerDataChanged = true;
@@ -795,7 +799,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 if (wincomponent[1].equals(oldWinComponentsIter.next()[1])) continue;
                 String identifier = wincomponent[0];
                 boolean useNative = wincomponent[1].equals("1");
-                Log.d(TAG, "extractWinComponentFiles identifier:" + identifier);
+                Log.d(TAG, "extractWinComponentFiles useNative:" + useNative + ",identifier:" + identifier);
                 if (useNative) {
                     TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "wincomponents/"+identifier+".tzst", windowsDir, onExtractFileListener);
                 } else {
