@@ -31,7 +31,11 @@ public class Shortcut {
         File iconFile = null;
         String wmClass = "";
 
-        File[] iconDirs = {container.getIconsDir(64), container.getIconsDir(48), container.getIconsDir(32), container.getIconsDir(16)};
+        File[] iconDirs = {
+                container.getIconsDir(64),
+                container.getIconsDir(48),
+                container.getIconsDir(32),
+                container.getIconsDir(16)};
         String section = "";
 
         int index;
@@ -40,8 +44,7 @@ public class Shortcut {
             if (line.isEmpty() || line.startsWith("#")) continue; // Skip empty lines and comments
             if (line.startsWith("[")) {
                 section = line.substring(1, line.indexOf("]"));
-            }
-            else {
+            } else {
                 index = line.indexOf("=");
                 if (index == -1) continue;
                 String key = line.substring(0, index);
@@ -59,8 +62,7 @@ public class Shortcut {
                         }
                     }
                     if (key.equals("StartupWMClass")) wmClass = value;
-                }
-                else if (section.equals("Extra Data")) {
+                } else if (section.equals("Extra Data")) {
                     try {
                         extraData.put(key, value);
                     }
