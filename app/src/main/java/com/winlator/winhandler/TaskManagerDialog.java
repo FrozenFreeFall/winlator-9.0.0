@@ -85,12 +85,10 @@ public class TaskManagerDialog extends ContentDialog implements OnGetProcessInfo
             final WinHandler winHandler = activity.getWinHandler();
             if (itemId == R.id.process_affinity) {
                 showProcessorAffinityDialog(processInfo);
-            }
-            else if (itemId == R.id.bring_to_front) {
+            } else if (itemId == R.id.bring_to_front) {
                 winHandler.bringToFront(processInfo.name);
                 dismiss();
-            }
-            else if (itemId == R.id.process_end) {
+            } else if (itemId == R.id.process_end) {
                 ContentDialog.confirm(activity, R.string.do_you_want_to_end_this_process, () -> {
                     winHandler.killProcess(processInfo.name);
                 });
