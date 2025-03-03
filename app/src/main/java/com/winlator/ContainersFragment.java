@@ -35,6 +35,9 @@ import com.winlator.xenvironment.ImageFs;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 容器列表
+ */
 public class ContainersFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView emptyTextView;

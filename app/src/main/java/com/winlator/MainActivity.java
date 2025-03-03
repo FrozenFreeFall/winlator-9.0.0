@@ -33,6 +33,9 @@ import com.winlator.xenvironment.ImageFsInstaller;
 
 import java.util.List;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final @IntRange(from = 1, to = 19) byte CONTAINER_PATTERN_COMPRESSION_LEVEL = 9;
     public static final byte PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;

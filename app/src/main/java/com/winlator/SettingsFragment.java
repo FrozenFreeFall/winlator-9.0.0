@@ -52,6 +52,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+/**
+ * 高级设置
+ */
 public class SettingsFragment extends Fragment {
     public static final String DEFAULT_WINE_DEBUG_CHANNELS = "warn,err,fixme";
     private Callback<Uri> selectWineFileCallback;

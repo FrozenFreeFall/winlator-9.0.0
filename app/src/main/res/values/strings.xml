@@ -135,8 +135,8 @@
     <string name="advanced">Advanced</string>
     <string name="box86_box64">Box86/Box64</string>
     <string name="system">System</string>
-    <string name="box86_preset">Box86 Preset</string>
-    <string name="box64_preset">Box64 Preset</string>
+    <string name="box86_preset">Box86 Preset(预设)</string>
+    <string name="box64_preset">Box64 Preset(预设)</string>
     <string name="box86_version">Box86 Version</string>
     <string name="box64_version">Box64 Version</string>
     <string name="letter">Letter</string>
@@ -165,10 +165,10 @@
     <string name="copy">Copy</string>
     <string name="installed_version">Installed Version</string>
     <string name="unable_to_download_file">Unable to download file</string>
-    <string name="stability">Stability</string>
-    <string name="compatibility">Compatibility</string>
-    <string name="intermediate">Intermediate</string>
-    <string name="performance">Performance</string>
+    <string name="stability">Stability(稳定)</string>
+    <string name="compatibility">Compatibility(兼容)</string>
+    <string name="intermediate">Intermediate()</string>
+    <string name="performance">Performance(性能)</string>
     <string name="preset">Preset</string>
     <string name="you_cannot_remove_this_preset">You cannot remove this preset</string>
     <string name="dxwrapper_help_content"><![CDATA[

@@ -57,6 +57,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * 容器创建/编辑页面
+ */
 public class ContainerDetailFragment extends Fragment {
     private ContainerManager manager;
     private final int containerId;

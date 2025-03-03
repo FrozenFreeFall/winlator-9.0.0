@@ -47,6 +47,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 虚拟键盘
+ */
 public class InputControlsFragment extends Fragment {
     private static final String INPUT_CONTROLS_URL = "https://raw.githubusercontent.com/brunodev85/winlator/main/input_controls/%s";
     private InputControlsManager manager;

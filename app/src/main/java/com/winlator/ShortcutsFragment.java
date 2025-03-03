@@ -30,6 +30,9 @@ import com.winlator.contentdialog.ShortcutSettingsDialog;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 快捷列表
+ */
 public class ShortcutsFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView emptyTextView;
