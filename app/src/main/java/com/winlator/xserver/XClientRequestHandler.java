@@ -1,5 +1,7 @@
 package com.winlator.xserver;
 
+import android.util.Log;
+
 import com.winlator.xconnector.Client;
 import com.winlator.xconnector.RequestHandler;
 import com.winlator.xconnector.XInputStream;
@@ -23,6 +25,9 @@ import java.io.IOException;
 import java.nio.ByteOrder;
 
 public class XClientRequestHandler implements RequestHandler {
+
+    private static final String TAG = "XClientRequestHandler";
+
     public static final byte RESPONSE_CODE_ERROR = 0;
     public static final byte RESPONSE_CODE_SUCCESS = 1;
     public static final int MAX_REQUEST_LENGTH = 65535;

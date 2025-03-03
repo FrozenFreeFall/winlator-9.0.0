@@ -34,6 +34,9 @@ import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * 虚拟键盘绘制
+ */
 public class InputControlsView extends View {
     public static final float DEFAULT_OVERLAY_OPACITY = 0.4f;
     private boolean editMode = false;

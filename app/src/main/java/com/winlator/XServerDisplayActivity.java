@@ -563,8 +563,9 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             int position = sProfile.getSelectedItemPosition();
             if (position > 0) {
                 showInputControls(inputControlsManager.getProfiles().get(position - 1));
+            } else {
+                hideInputControls();
             }
-            else hideInputControls();
         });
 
         dialog.show();

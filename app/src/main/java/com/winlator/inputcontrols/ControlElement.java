@@ -98,14 +98,12 @@ public class ControlElement {
             bindings[1] = Binding.KEY_D;
             bindings[2] = Binding.KEY_S;
             bindings[3] = Binding.KEY_A;
-        }
-        else if (type == Type.TRACKPAD) {
+        } else if (type == Type.TRACKPAD) {
             bindings[0] = Binding.MOUSE_MOVE_UP;
             bindings[1] = Binding.MOUSE_MOVE_RIGHT;
             bindings[2] = Binding.MOUSE_MOVE_DOWN;
             bindings[3] = Binding.MOUSE_MOVE_LEFT;
-        }
-        else if (type == Type.RANGE_BUTTON) {
+        } else if (type == Type.RANGE_BUTTON) {
             scroller = new RangeScroller(inputControlsView, this);
         }
 
