@@ -51,14 +51,12 @@ public class Keyboard {
                 pressedKeys.remove(keycode);
                 modifiersMask.unset(getModifierFlag(keycode));
                 triggerOnKeyRelease(keycode);
-            }
-            else {
+            } else {
                 pressedKeys.add(keycode);
                 modifiersMask.set(getModifierFlag(keycode));
                 triggerOnKeyPress(keycode, keysym);
             }
-        }
-        else if (!pressedKeys.contains(keycode)) {
+        } else if (!pressedKeys.contains(keycode)) {
             pressedKeys.add(keycode);
             if (isModifier(keycode)) modifiersMask.set(getModifierFlag(keycode));
             triggerOnKeyPress(keycode, keysym);

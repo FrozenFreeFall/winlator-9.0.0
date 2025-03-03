@@ -643,8 +643,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
                 TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/turnip-"+DefaultVersion.TURNIP+".tzst", rootDir);
                 TarCompressorUtils.extract(TarCompressorUtils.Type.ZSTD, this, "graphics_driver/zink-"+DefaultVersion.ZINK+".tzst", rootDir);
             }
-        }
-        else if (graphicsDriver.equals("virgl")) {
+        } else if (graphicsDriver.equals("virgl")) {
             envVars.put("GALLIUM_DRIVER", "virpipe");
             envVars.put("VIRGL_NO_READBACK", "true");
             envVars.put("VIRGL_SERVER_PATH", UnixSocketConfig.VIRGL_SERVER_PATH);
