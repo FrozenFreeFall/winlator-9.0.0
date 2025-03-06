@@ -140,44 +140,39 @@ public class ContainersFragment extends Fragment {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) listItemMenu.setForceShowIcon(true);
 
             listItemMenu.setOnMenuItemClickListener((menuItem) -> {
-                switch (menuItem.getItemId()) {
-                    case R.id.container_run:
-                        if (!XrActivity.isSupported()) {
-                            Intent intent = new Intent(context, XServerDisplayActivity.class);
-                            intent.putExtra("container_id", container.id);
-                            context.startActivity(intent);
-                        } else {
-                            XrActivity.openIntent(getActivity(), container.id, null);
-                        }
-                        break;
-                    case R.id.container_edit: // 编辑
-                        FragmentManager fragmentManager = getParentFragmentManager();
-                        fragmentManager.beginTransaction()
+                int itemId = menuItem.getItemId();
+                if (itemId == R.id.container_run) {
+                    if (!XrActivity.isSupported()) {
+                        Intent intent = new Intent(context, XServerDisplayActivity.class);
+                        intent.putExtra("container_id", container.id);
+                        context.startActivity(intent);
+                    } else {
+                        XrActivity.openIntent(getActivity(), container.id, null);
+                    }
+                } else if (itemId == R.id.container_edit) { // 编辑
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.FLFragmentContainer, new ContainerDetailFragment(container.id))
                             .commit();
-                        break;
-                    case R.id.container_duplicate:
-                        ContentDialog.confirm(getContext(), R.string.do_you_want_to_duplicate_this_container, () -> {
-                            preloaderDialog.show(R.string.duplicating_container);
-                            manager.duplicateContainerAsync(container, () -> {
-                                preloaderDialog.close();
-                                loadContainersList();
-                            });
+                } else if (itemId == R.id.container_duplicate) {
+                    ContentDialog.confirm(getContext(), R.string.do_you_want_to_duplicate_this_container, () -> {
+                        preloaderDialog.show(R.string.duplicating_container);
+                        manager.duplicateContainerAsync(container, () -> {
+                            preloaderDialog.close();
+                            loadContainersList();
                         });
-                        break;
-                    case R.id.container_remove:
-                        ContentDialog.confirm(getContext(), R.string.do_you_want_to_remove_this_container, () -> {
-                            preloaderDialog.show(R.string.removing_container);
-                            manager.removeContainerAsync(container, () -> {
-                                preloaderDialog.close();
-                                loadContainersList();
-                            });
+                    });
+                } else if (itemId == R.id.container_remove) {
+                    ContentDialog.confirm(getContext(), R.string.do_you_want_to_remove_this_container, () -> {
+                        preloaderDialog.show(R.string.removing_container);
+                        manager.removeContainerAsync(container, () -> {
+                            preloaderDialog.close();
+                            loadContainersList();
                         });
-                        break;
-                    case R.id.container_info:
-                        (new StorageInfoDialog(getActivity(), container)).show();
-                        break;
+                    });
+                } else if (itemId == R.id.container_info) {
+                    (new StorageInfoDialog(getActivity(), container)).show();
                 }
                 return true;
             });

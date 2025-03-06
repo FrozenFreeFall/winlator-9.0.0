@@ -298,50 +298,42 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         final GLRenderer renderer = xServerView.getRenderer();
-        switch (item.getItemId()) {
-            case R.id.main_menu_keyboard:
-                AppUtils.showKeyboard(this);
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.main_menu_input_controls:
-                showInputControlsDialog();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.main_menu_toggle_fullscreen:
-                renderer.toggleFullscreen();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.main_menu_task_manager:
-                (new TaskManagerDialog(this)).show();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.main_menu_magnifier:
-                if (magnifierView == null) {
-                    final FrameLayout container = findViewById(R.id.FLXServerDisplay);
-                    magnifierView = new MagnifierView(this);
-                    magnifierView.setZoomButtonCallback((value) -> {
-                        renderer.setMagnifierZoom(Mathf.clamp(renderer.getMagnifierZoom() + value, 1.0f, 3.0f));
-                        magnifierView.setZoomValue(renderer.getMagnifierZoom());
-                    });
+        int itemId = item.getItemId();
+        if (itemId == R.id.main_menu_keyboard) {
+            AppUtils.showKeyboard(this);
+            drawerLayout.closeDrawers();
+        } else if (itemId == R.id.main_menu_input_controls) {
+            showInputControlsDialog();
+            drawerLayout.closeDrawers();
+        } else if (itemId == R.id.main_menu_toggle_fullscreen) {
+            renderer.toggleFullscreen();
+            drawerLayout.closeDrawers();
+        } else if (itemId == R.id.main_menu_task_manager) {
+            (new TaskManagerDialog(this)).show();
+            drawerLayout.closeDrawers();
+        } else if (itemId == R.id.main_menu_magnifier) {
+            if (magnifierView == null) {
+                final FrameLayout container = findViewById(R.id.FLXServerDisplay);
+                magnifierView = new MagnifierView(this);
+                magnifierView.setZoomButtonCallback((value) -> {
+                    renderer.setMagnifierZoom(Mathf.clamp(renderer.getMagnifierZoom() + value, 1.0f, 3.0f));
                     magnifierView.setZoomValue(renderer.getMagnifierZoom());
-                    magnifierView.setHideButtonCallback(() -> {
-                        container.removeView(magnifierView);
-                        magnifierView = null;
-                    });
-                    container.addView(magnifierView);
-                }
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.main_menu_logs:
-                debugDialog.show();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.main_menu_touchpad_help:
-                showTouchpadHelpDialog();
-                break;
-            case R.id.main_menu_exit:
-                exit();
-                break;
+                });
+                magnifierView.setZoomValue(renderer.getMagnifierZoom());
+                magnifierView.setHideButtonCallback(() -> {
+                    container.removeView(magnifierView);
+                    magnifierView = null;
+                });
+                container.addView(magnifierView);
+            }
+            drawerLayout.closeDrawers();
+        } else if (itemId == R.id.main_menu_logs) {
+            debugDialog.show();
+            drawerLayout.closeDrawers();
+        } else if (itemId == R.id.main_menu_touchpad_help) {
+            showTouchpadHelpDialog();
+        } else if (itemId == R.id.main_menu_exit) {
+            exit();
         }
         return true;
     }
